@@ -1,0 +1,25 @@
+/* Scalavlet Default Styles */
+
+/* */
+.sv-page-top-margin {
+  margin-top: 60px;
+}
+
+/* Override Bootstrap */
+
+.lead {
+  font-size: 18px;	
+}
+
+pre {
+  padding: 3px;
+  font-size: 14px;
+  color: #7b8a8b;
+  background-color: #ecf0f1;
+  border: 1px solid #5C7F87; /* For Solarized Dark */
+  border-radius: 3px;	
+}
+
+pre code {
+  border-radius: 3px;	
+}
