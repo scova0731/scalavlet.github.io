@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <!-- SEO -->
-    <meta name="keywords" content="scala,servlet,web,sinatra,scalatra,finatra,jetty,tomcat,simple,easy,implicit,no xml">
+    <meta name="keywords" content="scala,servlet,sinatra,scalatra,finatra,jetty,tomcat,rest">
     <meta name="description" content="Scalavlet is yet another tiny Sinatra like Scala web framework on top of Servlet specification.
               That provides a simple coding way for HTTP request routing without any XML configuration and complicated Scala implicit conversions.">
 
@@ -14,6 +14,7 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./styles/bootstrap.css" media="screen">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/highlight/solarized_dark.css">
     <link rel="stylesheet" href="./styles/scalavlet.css" media="screen">
     <!-- <link rel="stylesheet" href="../assets/css/bootswatch.min.css"> -->
@@ -102,42 +103,84 @@
               Scalavlet is yet another tiny Sinatra like Scala web framework on top of Servlet specification.
               That provides a simple coding way for HTTP request routing without any XML configuration and complicated Scala implicit conversions.
             </p>
+            <p><button class="btn btn-large btn-success">Get Started</button>
           </div>
           <div class="col-lg-6" style="padding: 15px 15px 0 15px;">
-<!--             <div class="well sponsor">
-              <a href="http://srv.buysellads.com/direct/click/track/yes/x/G6NDC27ICWAI627UCWALYK7UCKBILKJMCT7I5" rel="nofollow" target="_blank">
-                <span style="float: left; margin-right: 15px;">
-                  <img src="http://srv.buysellads.com/direct/image/track/yes/x/G6NDC27ICWAI627UCWALYK7UCKBILKJMCT7I5" width="175" height="135">
-                </span>
-              </a>
-              <a href="http://srv.buysellads.com/direct/click/track/yes/x/G6NDC27ICWAI627UCWALYK7UCKBILKJMCT7I5" rel="nofollow" target="_blank">
-                <h4 style="margin-bottom: 0.4em;">Treehouse</h4>
-                <div class="clearfix">
-                  <p>Learn Web Design, Coding, Mobile App Development &amp; More.</p>
-                  <p>Start Learning for Free!</p>
-                </div>
-              </a>
-            </div>
- --> 
-<pre><code class="scala">
-class SampleServlet extends Scalavlet {
+<pre><code class="scala">object SampleServlet extends Scalavlet {
   get("/ping") { request =>
     "pong"
   }
 }
 
-class Bootstrap extends ScalavletBootable {
-  def onStart (context: Context): Unit = {
-    context.mount(new SampleServlet, "/")
+class Bootstrap extends Bootable {
+  def onStart (ctx: Context): Unit = {
+    ctx.mount(SampleServlet, "/")
   }
-}
-</code></pre>
+}</code></pre>
          </div>
         </div>
       </div>
 
-<div style="height:400px"></div>
-         
+      <div class="row">
+        <div class="col-lg-4">
+          <h3><i class="fa fa-code-fork"></i> Intuitive Routing</h3>
+          <p>Sinatra like routing is very easy to read, nothing special Scala implicit techniques are used. Routing part is highly affeceted by <a href="http://scalatra.org">Scalatra</a>. 
+          <a href="get-started.html#">more ...</a></p>
+        </div>
+        <div class="col-lg-4">
+          <h3><i class="fa fa-bar-chart-o"></i> No XML Configuration</h3>
+          <p>Instead of dependeing on Servlet's web.xml for routing and parameter getting/setting, Scalavlet chose programatic building and the centralized <a href="https://github.com/typesafehub/config">Typesafehub/Config</a> based configuration.
+          <a href="get-started.html#">more ...</a></p>
+        </div>
+        <div class="col-lg-4">
+          <h3><i class="fa fa-folder-open"></i> Easy to Start</h3>
+          <p>
+            Scalavlet is not a full-stack web framework, but provides several sample implementations for typical usages.
+            You can get ready soon.
+            <a href="get-started.html#">more ...</a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+          <h3><i class="fa fa-indent"></i> Be RESTful</h3>
+          <p>
+            One of the greatest features of Scala is DSL. Scalavlet integrates with json4s which provides 
+            beatiful JSON building DSL. For request unmarshalling, Jackson is used. <a href="get-started.html#">more ...</a>
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <h3><i class="fa fa-tachometer"></i> Async with Future</h3>
+          <p>
+            Since 3.0, Servlet supports asynchronous processing feature. When Scalavlet detects a Future object as aresponse,
+            it automatically starts the Servlet async mode accordingly. 
+            <a href="get-started.html#">more ...</a>
+          </p>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+
+      <div class="row" style="padding: 40px 0;  ">
+        <div class="col-lg-1">&nbsp;</div>
+        <div class="col-lg-4">
+          <p>Download with SBT</p>
+          <pre class="text-left" style="width:400px;"><code class="scala">val appDependencies = Seq(
+  // other dependencies plus ...
+  "org.scalavlet" %% "scalavlet-core" % "wait for a moment")
+ </code></pre>
+        </div>
+        <div class="col-lg-2">&nbsp;</div>
+        <div class="col-lg-4">
+          <p>Download with Maven</p>
+          <pre class="text-left" style="width:400px;"><code class="xml">&lt;dependency>
+  &lt;groupId>org.scalavlet&lt;/groupId>
+  &lt;artifactId>scalavlet-core&lt;/artifactId>
+  &lt;version>(wait for a whilte)&lt;/version>
+&lt;/dependency></code></pre>
+        </div>
+        <div class="col-lg-1">&nbsp;</div>
+      </div>
+
       <footer>
         <div class="row">
           <div class="col-lg-12">
@@ -152,6 +195,7 @@ class Bootstrap extends ScalavletBootable {
 
 
     </div>
+    <!-- end of container -->
 
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
